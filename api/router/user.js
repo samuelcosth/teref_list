@@ -4,9 +4,9 @@ import { Router } from "express";
 const rout_user = Router();
 
 rout_user.post("/user", (req, res) => {
-    const { nome, email, fone, data_nascimento } = req.body;
+    const { nome, email, tarefa, data } = req.body;
 
-    db.query(`insert into usuarios (nome, email, fone, data_nascimento) values ('${nome}', '${email}','${fone}','${data_nascimento}')`, (err, result) => {
+    db.query(`insert into usuarios (nome, email, tarefa, data) values ('${nome}', '${email}','${tarefa}','${data}')`, (err, result) => {
         if (err) {
             res.json("Erro ao inserir user: " + err.message)
         }
@@ -40,13 +40,13 @@ rout_user.delete("/delete", (req, res) => {
 });
 
 rout_user.put("/atualizacao", (req, res) => {
-    const { nome, email, fone, data_nascimento, id } = req.body;
+    const { nome, email, tarefa, data, id } = req.body;
 
-    db.query(`update usuarios set nome='${nome}',update usuarios set email='${email}',update usuarios set fone='${fone}',update usuarios set data_nascimento='${data_nascimento}',
+    db.query(`update usuarios set nome='${nome}',${email}','${tarefa}',${data}',
     where id=${id}`, (err, result) => {
 
         res.json({
-            Edição: `Produto alterado com sucesso!`
+            Edição: `tarefa alterado com sucesso!`
         })
     })
 })
