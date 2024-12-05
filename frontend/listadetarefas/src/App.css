@@ -1,42 +1,68 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body{
+  min-height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(180deg, #363467 0%, rgba(30, 29, 79, 0.8) 100%);
+  font-family: "Noto Sans", sans-serif;
+  display: flex;
+  justify-content: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+form{
+  display: flex;
+  justify-content: space-around;
+  width: 70vw;
+  margin-top: 10%;
+  margin-left: 15%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.input{
+  border-radius: 10px;
+  width: 14vw;
+  height: 5vh;
+  padding: 4px;
+  border: none;
+
 }
 
-.card {
-  padding: 2em;
+.button{
+  border-radius: 10px;
+  background-color: thistle;
+  width: 10vw;
+  height: 5vh;
+  color: white;
+  box-shadow: 5px 5px 10px black;
+  cursor: pointer;
 }
 
-.read-the-docs {
-  color: #888;
+.div1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 100vw;
+  height: 5vh;
+}
+
+.div2{
+  background-color: aliceblue;
+  width: 70vw;
+  height: 40vh;
+  margin-top: 10%;
+  margin-left: 15%;
+  border-radius: 10px;
+  display: flex;
+}
+
+.div3{
+  display: flex;
+  width: 60vw;
+  margin-left: 4%;
+  justify-content: space-between;
 }
