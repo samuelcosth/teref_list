@@ -15,7 +15,6 @@ rout_user.post("/user", (req, res) => {
     });
 })
 
-
 rout_user.get("/lista", (req, res) => {
     db.query(`select * from usuarios`, (err, result) => {
         if (err) {

@@ -19,7 +19,6 @@ form{
   justify-content: space-around;
   width: 70vw;
   margin-top: 10%;
-  margin-left: 15%;
 }
 
 .input{
@@ -33,36 +32,21 @@ form{
 
 .button{
   border-radius: 10px;
-  background-color: thistle;
+  background-color: rgb(151, 36, 185);
   width: 10vw;
   height: 5vh;
   color: white;
-  box-shadow: 5px 5px 10px black;
+  box-shadow: 5px 5px 10px rgb(47, 0, 68);
   cursor: pointer;
+  border: none;
 }
 
 .div1{
   display: flex;
-  align-items: center;
   justify-content: center;
-  color: white;
-  width: 100vw;
-  height: 5vh;
-}
-
-.div2{
-  background-color: aliceblue;
-  width: 70vw;
-  height: 40vh;
   margin-top: 10%;
-  margin-left: 15%;
-  border-radius: 10px;
-  display: flex;
 }
+#texth1{
+  color: white;
 
-.div3{
-  display: flex;
-  width: 60vw;
-  margin-left: 4%;
-  justify-content: space-between;
 }

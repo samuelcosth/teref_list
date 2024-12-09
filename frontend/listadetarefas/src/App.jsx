@@ -1,53 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import axios from "axios"
 
-const MeuComponente = () => {
-  const [dados, setDados] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [erro, setErro] = useState(null);
-
-  useEffect(() => {
-    const buscarDados = async () => {
-      try {
-        const resposta = await axios.get('http://localhost:3333/lista');
-        setDados(resposta.data);
-        setLoading(false);
-      } catch (error) {
-        setErro(error.message);
-        setLoading(false);
-      }
-    };
-
-    buscarDados();
-  }, []);
-
-  if (loading) {
-    return <p>Carregando...</p>;
-  }
-
-  if (erro) {
-    return <p>Erro: {erro}</p>;
-  }
-
-  return (
-    <div>
-      <h1>Dados Fetched</h1>
-      <ul>
-        {dados.map(item => (
-          <li key={item.id}>{item.title}</li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
 function App() {
+  const [users, setUsers] = useState([])
+
   const [nome, setNome] = useState();
   const [email, setEmail] = useState();
-  const [fone, setTarefas] = useState();
+  const [fone, setFone] = useState();
   const [data_nascimento, setData] = useState();
 
   function handleAddUser(e){
@@ -57,51 +19,55 @@ function App() {
       nome,
       email,
       fone,
-      data_nascimento
+      data
     })
     .then((response)=>{
       console.log("Cadastro realizado")
     })
     .catch((erro)=>{
-      console.log("Erro")
+      console.log("Errooooo")
     })
     
   }
+  async function getUsers (){
+    const usersfrom = await axios.get('http://localhost:3333/lista')
+
+    setUsers( usersfrom.data )
+  }
+
+  useEffect(() => {
+    getUsers()
+  })
+  
 
   return (
     <>
     <div className='div1'>
-      <h1>
-        Lista de Tarefas
-      </h1>
+      <h1 id='texth1'>Lista de Tarefas</h1>
     </div>
       <form onSubmit={handleAddUser}>
         <input className='input' type="text" onChange={e=>setNome(e.target.value)}
-        placeholder='nome'/>
+        placeholder='NOME'/>
         <input className='input' type="text" onChange={e=>setEmail(e.target.value)}
-        placeholder='email'/>
-        <input className='input' type="text" onChange={e=>setTarefas(e.target.value)}
-        placeholder='tarefa'/>
+        placeholder='E-MAIL'/>
+        <input className='input' type="text" onChange={e=>setFone(e.target.value)}
+        placeholder='FONE'/>
         <input className='input' type="text" onChange={e=>setData(e.target.value)}
-        placeholder='data'/>
-        <button type='submit' className='button'>Cadastrar</button>
+        placeholder='DATA'/>
+        <div id='div-btn1'>
+          <button className='button' type='submit'>Cadastrar</button>
+        </div>
       </form>
-      <div className='div2'>
-        <div className='div3'>
+      {users.map((user) => (
+        <div>
           <div>
-            <h1>nome</h1>
-          </div>
-          <div>
-            <h1>email</h1>
-          </div>
-          <div>
-            <h1>tarefa</h1>
-          </div>
-          <div>
-            <h1>data</h1>
+            <p>Nome: <span>{user.nome}</span></p>
+            <p>Nome: <span>{user.email}</span></p>
+            <p>Nome: <span>{user.fone}</span></p>
+            <p>Nome: <span>{user.data}</span></p>
           </div>
         </div>
-      </div>
+      ))} 
     </>
   )
 }
