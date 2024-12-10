@@ -38,7 +38,11 @@ function App() {
   useEffect(() => {
     getUsers()
   })
-  
+
+  async function deleteUsers(id) {
+    await axios.delete(`http://localhost:3333/delete/${id}`)
+    
+  }
 
   return (
     <>
@@ -58,6 +62,7 @@ function App() {
           <button className='button' type='submit'>Cadastrar</button>
         </div>
       </form>
+      <div>
       {users.map((user) => (
         <div>
           <div>
@@ -66,8 +71,10 @@ function App() {
             <p>Nome: <span>{user.fone}</span></p>
             <p>Nome: <span>{user.data}</span></p>
           </div>
+          <div><button onClick={deleteUsers(user.id)}>p</button></div>
         </div>
       ))} 
+      </div>
     </>
   )
 }
